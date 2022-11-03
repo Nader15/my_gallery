@@ -1,16 +1,28 @@
-# my_gallery
+# My Gallery
 
-A new Flutter project.
+My Gallery app is an application that stores my images and can upload my new image from my account
 
-## Getting Started
+## Design pattern & App architecture
 
-This project is a starting point for a Flutter application.
+- State management : GetX (Separate the UI and business logic & Code easier to test & Code more readable)
+- Clean Code
+- Responsive design with Phone and Tablets
 
-A few resources to get you started if this is your first Flutter project:
+## ScreenShots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<table>
+    <tr>
+        <td><img src="assets/screenshots/screenshot1.jpg" width="300" /></td>
+        <td><img src="assets/screenshots/screenshot2.jpg" width="300" /></td>
+        <td><img src="assets/screenshots/screenshot3.jpg" width="300" /></td>
+    </tr>
+    <tr>
+        <td><img src="assets/screenshots/screenshot4.jpg" width="300" /></td>
+        <td><img src="assets/screenshots/screenshot5.jpg" width="300" /></td>
+        <td><img src="assets/screenshots/screenshot6.jpg" width="300" /></td>
+    </tr>
+</table>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Android Application
+
+Install Application From Google drive [Install](https://drive.google.com/file/d/1sh0rux63ndE11k_06_9tI3PjSC-_UaiM/view?usp=sharing)
