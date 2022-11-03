@@ -3,7 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:lottie/lottie.dart';
 import '../../../Routes/routes.dart';
+import '../../../Utils/app_colors.dart';
 import '../../../Utils/app_constants.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +23,7 @@ class _SplashViewState extends State<SplashScreen> {
       : Get.offAllNamed(Routes.homeScreen);
 
   startDelay() {
-    timer = Timer(const Duration(seconds: 3), _goNext);
+    timer = Timer(const Duration(seconds: 5), _goNext);
   }
 
   @override
@@ -37,11 +39,11 @@ class _SplashViewState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColors.WHITE_COLOR,
+      // backgroundColor: AppColors.MAIN_COLOR,
       body: Center(
-        child: Hero(
-          tag: 'logo',
-          child: Icon(Icons.ac_unit_sharp)
+        child:   Lottie.asset(
+          "assets/icons/animated_logo.json",
+          height: 150,
         ),
       ),
     );

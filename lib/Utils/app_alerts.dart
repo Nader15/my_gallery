@@ -13,7 +13,8 @@ class AppAlerts {
     final result = await Get.defaultDialog(
       title: 'Exit'.tr,
       titleStyle: const TextStyle(color: AppColors.RED_COLOR),
-      content: Text("Are you sure you want to exit the application?", textAlign: TextAlign.center),
+      content: Text("Are you sure you want to exit the application?",
+          textAlign: TextAlign.center),
       cancel: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
@@ -29,7 +30,7 @@ class AppAlerts {
             AppColors.MAIN_COLOR,
           ),
           foregroundColor: MaterialStateProperty.all(
-            AppColors.BLACK_COLOR,
+            AppColors.WHITE_COLOR,
           ),
         ),
         onPressed: () {
@@ -41,9 +42,8 @@ class AppAlerts {
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-              side: BorderSide(color: AppColors.MAIN_COLOR)
-            ),
+                borderRadius: BorderRadius.circular(5),
+                side: BorderSide(color: AppColors.MAIN_COLOR)),
           ),
           backgroundColor: MaterialStateProperty.all(
             AppColors.WHITE_COLOR,
@@ -65,11 +65,13 @@ class AppAlerts {
       return result;
     }
   }
+
   Future<bool>? onLogOutPop() async {
     final result = await Get.defaultDialog(
       title: 'Log Out'.tr,
       titleStyle: const TextStyle(color: AppColors.RED_COLOR),
-      content: Text("Are you sure that you want to Log out?", textAlign: TextAlign.center),
+      content: Text("Are you sure that you want to Log out?",
+          textAlign: TextAlign.center),
       cancel: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
@@ -85,7 +87,7 @@ class AppAlerts {
             AppColors.MAIN_COLOR,
           ),
           foregroundColor: MaterialStateProperty.all(
-            AppColors.BLACK_COLOR,
+            AppColors.WHITE_COLOR,
           ),
         ),
         onPressed: () {
@@ -97,9 +99,8 @@ class AppAlerts {
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-              side: BorderSide(color: AppColors.MAIN_COLOR)
-            ),
+                borderRadius: BorderRadius.circular(5),
+                side: BorderSide(color: AppColors.MAIN_COLOR)),
           ),
           backgroundColor: MaterialStateProperty.all(
             AppColors.WHITE_COLOR,
@@ -146,7 +147,7 @@ class AppAlerts {
                 ),
               ),
               backgroundColor: MaterialStateProperty.all(
-                Colors.purple,
+                AppColors.MAIN_COLOR,
               ),
               foregroundColor: MaterialStateProperty.all(AppColors.WHITE_COLOR),
             ),
@@ -170,7 +171,9 @@ class AppAlerts {
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              backgroundColor: MaterialStateProperty.all(Colors.purple),
+              backgroundColor: MaterialStateProperty.all(
+                AppColors.MAIN_COLOR,
+              ),
               foregroundColor: MaterialStateProperty.all(
                 AppColors.WHITE_COLOR,
               ),

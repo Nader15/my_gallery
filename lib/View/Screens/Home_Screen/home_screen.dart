@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:my_gallery/Logic/Controllers/home_controller.dart';
 import 'package:my_gallery/Utils/app_alerts.dart';
 import '../../../Utils/app_colors.dart';
+import 'Widgets/preview_image_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -14,14 +15,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple,
+      backgroundColor: AppColors.MAIN_COLOR,
       body: WillPopScope(
         onWillPop: () => AppAlerts().onWillPop()!,
         child: SafeArea(
           child: EasyRefresh.custom(
             onRefresh: homeController.onRefresh,
             header: BallPulseHeader(
-              color: AppColors.MAIN_COLOR,
+              color: AppColors.WHITE_COLOR,
             ),
             slivers: <Widget>[
               SliverList(
@@ -39,7 +40,8 @@ class HomeScreen extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         const Text(
                                           "Welcome",
@@ -58,9 +60,20 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    const CircleAvatar(
-                                      child: Icon(Icons.person_outline),
-                                    )
+                                    Container(
+                                      padding: const EdgeInsets.all(5.0),
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.WHITE_COLOR,
+                                      ),
+                                      child: const CircleAvatar(
+                                        radius: 20,
+                                        backgroundColor: AppColors.WHITE_COLOR,
+                                        backgroundImage: NetworkImage(
+                                          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 const SizedBox(height: 30),
@@ -100,9 +113,11 @@ class HomeScreen extends StatelessWidget {
                                             children: const [
                                               CircularProgressIndicator(),
                                               SizedBox(height: 10),
-                                              Text("Uploading image ..",
+                                              Text(
+                                                "Uploading image ..",
                                                 style: TextStyle(
-                                                    color: AppColors.WHITE_COLOR),
+                                                    color:
+                                                        AppColors.WHITE_COLOR),
                                               ),
                                             ],
                                           )
@@ -111,10 +126,12 @@ class HomeScreen extends StatelessWidget {
                                               AppAlerts().getImagePop(context);
                                             },
                                             style: ButtonStyle(
-                                                shape: MaterialStateProperty.all(
+                                                shape:
+                                                    MaterialStateProperty.all(
                                                   RoundedRectangleBorder(
                                                     borderRadius:
-                                                        BorderRadius.circular(15),
+                                                        BorderRadius.circular(
+                                                            15),
                                                   ),
                                                 ),
                                                 backgroundColor:
@@ -142,6 +159,8 @@ class HomeScreen extends StatelessWidget {
                                         ? const Center(
                                             child: Text(
                                               "Your gallery is empty",
+                                              style: TextStyle(
+                                                  color: AppColors.WHITE_COLOR),
                                             ),
                                           )
                                         : GridView.builder(
@@ -161,32 +180,53 @@ class HomeScreen extends StatelessWidget {
                                             shrinkWrap: true,
                                             itemBuilder:
                                                 (BuildContext context, index) {
-                                              return ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                child: CachedNetworkImage(
-                                                  imageUrl: homeController
-                                                      .myGalleryList[index],
-                                                  fit: BoxFit.fill,
-                                                  placeholder: (context, url) =>
-                                                      Image.asset(
-                                                    "assets/images/placeholder.jpg",
-                                                    height: double.infinity,
-                                                    fit: BoxFit.fill,
-                                                  ),
-                                                  errorWidget:
-                                                      (context, url, error) =>
-                                                          Stack(
-                                                    children: [
-                                                      Image.asset(
+                                              return InkWell(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (_) {
+                                                        return PreviewImage(
+                                                          imageUrl: homeController
+                                                                  .myGalleryList[index],
+                                                        );
+                                                      },
+                                                    ),
+                                                  );
+                                                },
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  child: Hero(
+                                                    tag: homeController
+                                                        .myGalleryList[index],
+                                                    child: CachedNetworkImage(
+                                                      imageUrl: homeController
+                                                          .myGalleryList[index],
+                                                      fit: BoxFit.fill,
+                                                      placeholder:
+                                                          (context, url) =>
+                                                              Image.asset(
                                                         "assets/images/placeholder.jpg",
-                                                        fit: BoxFit.fill,
                                                         height: double.infinity,
+                                                        fit: BoxFit.fill,
                                                       ),
-                                                      Center(
-                                                          child: Text(
-                                                              "No_Image".tr)),
-                                                    ],
+                                                      errorWidget:
+                                                          (context, url, error) =>
+                                                              Stack(
+                                                        children: [
+                                                          Image.asset(
+                                                            "assets/images/placeholder.jpg",
+                                                            fit: BoxFit.fill,
+                                                            height:
+                                                                double.infinity,
+                                                          ),
+                                                          Center(
+                                                              child: Text(
+                                                                  "No_Image".tr)),
+                                                        ],
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
                                               );
