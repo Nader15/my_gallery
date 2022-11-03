@@ -111,7 +111,10 @@ class HomeScreen extends StatelessWidget {
                                     homeController.isLoadingImage.value
                                         ? Column(
                                             children: const [
-                                              CircularProgressIndicator(),
+                                              CircularProgressIndicator(
+                                                  color: AppColors
+                                                      .WHITE_COLOR
+                                              ),
                                               SizedBox(height: 10),
                                               Text(
                                                 "Uploading image ..",
@@ -154,7 +157,10 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 20),
                                 homeController.isLoading.value
-                                    ? const CircularProgressIndicator()
+                                    ? const CircularProgressIndicator(
+                                    color: AppColors
+                                        .WHITE_COLOR
+                                )
                                     : homeController.myGalleryList.isEmpty
                                         ? const Center(
                                             child: Text(
